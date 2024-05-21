@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+#today, #add{
+	width:100px;
+	font-size: auto;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	margin: 5px;
+	
+}
+#button1, #button2{
+    width: 100px; /* 幅を調整 */
+    height: 100px; /* 高さを調整 */
+    border: none; /* 枠線を削除 */
+    border-radius: 10px; /* 角丸にする */
+    font-size: 16px; /* フォントサイズを設定 */
+    color: #fff; /* 文字色を白に設定 */
+    cursor: pointer; /* カーソルをポインターに変更 */
+    margin: 5px; /* ボタン間のマージンを設定 */
+}
+#button1{
+	background-color: aqua;
+}
+#button2{
+	background-color: peru;
+}
+

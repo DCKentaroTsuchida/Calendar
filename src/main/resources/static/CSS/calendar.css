@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+/* カレンダー全体のスタイル */
+.calendar {
+    border-collapse: collapse;
+    width: 50%; /* 画面の半分に調整 */
+    float: left; /* 左に配置 */
+    font-family: "Ink Free", sans-serif; /* Ink Free フォントを指定 */
+}
+
+/* カレンダーの日付セルのスタイル */
+.calendar td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+    font-size: 18px; /* 文字サイズを大きく */
+    color: #999; /* 文字色を薄く */
+}
+
+/* カレンダーのヘッダー行のスタイル */
+.calendar th {
+    background-color: #f2f2f2;
+    padding: 8px;
+    text-align: center;
+    font-size: 20px; /* 文字サイズを大きく */
+    color: #666; /* 文字色を薄く */
+}
+
+/* 今日の日付の強調スタイル */
+.calendar .highlight {
+    background-color: pink; /* ピンク色に変更 */
+}
