@@ -1,5 +1,10 @@
 @charset "UTF-8";
 
+#word{
+	font-size: 50px;
+	text-align: center;
+	font-family: "SimSun", sens-serif;
+}
 /* カレンダー全体のスタイル */
 .calendar{
     border-collapse: collapse;
@@ -35,9 +40,8 @@
 }
 
 /* カウンターのスタイル */
-.counter {
+.counter1, .counter2 {
     display: block;
     margin-top: 5px;
     font-size: 14px;
-    color: #333;
 }
