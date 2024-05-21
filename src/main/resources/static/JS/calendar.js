@@ -6,6 +6,9 @@ document.addEventListener("DOMContentLoaded", function() {
     var year = today.getFullYear();
     var month = today.getMonth();
 
+    // カウンター用の変数を初期化
+    var counters = {};
+
     // カレンダーを描画する関数を呼び出す
     renderCalendar(year, month);
 
@@ -22,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function() {
         calendarHtml += "<tr><th colspan='7'>" + getMonthName(month) + " " + year + "</th></tr>";
         calendarHtml += "<tr>";
         calendarHtml += "<th class='prev' id='prev'>&#10094;</th>"; // 前月ボタン
-        calendarHtml += "<th colspan='5'></th>"; // 空のセル
+        calendarHtml += "<th colspan='5'><button id = 'today'>Back to the Today</button></th>"; //Back to the Todayボタン
         calendarHtml += "<th class='next' id='next'>&#10095;</th>"; // 次月ボタン
         calendarHtml += "</tr>";
         // 曜日のヘッダーを追加、ヘッダーは<th>
@@ -39,8 +42,14 @@ document.addEventListener("DOMContentLoaded", function() {
                     // このハイライトがcssで呼び出され当日の色を変えている
                     highlightClass = "highlight";
                 }
+                var dateKey = `${year}-${month+1}-${dayCounter}`;
+                counters[dateKey] = counters[dateKey] || {counter1: 0, counter2: 0};
                 // 日付のセルを追加
-                calendarHtml += "<td class='" + highlightClass + "'>" + dayCounter + "</td>";
+                calendarHtml += `<td class='${highlightClass}'>
+                                    ${dayCounter}
+                                    <span class='counter' id='counter1-${dateKey}'>${counters[dateKey].counter1}</span>
+                                    <span class='counter' id='counter2-${dateKey}'>${counters[dateKey].counter2}</span>
+                                </td>`;
                 dayCounter++;
             } else {
                 // 空のセルを追加
@@ -79,13 +88,26 @@ document.addEventListener("DOMContentLoaded", function() {
             // カレンダーを再描画する
             renderCalendar(year, month);
         });
-        
+
+        // 今日に戻るボタンのクリックイベントリスナー
         document.getElementById("today").addEventListener("click",function(){
-			year = today.getFullYear();
-			month = today.getMonth();
-			
-			renderCalendar(year, month);
-		})
+            year = today.getFullYear();
+            month = today.getMonth();
+            renderCalendar(year, month);
+        });
+
+        // カウンターボタンのクリックイベントリスナー
+        document.getElementById("button1").addEventListener("click", function(){
+            var dateKey = `${year}-${month+1}-${today.getDate()}`;
+            counters[dateKey].counter1++;
+            document.getElementById(`counter1-${dateKey}`).innerText = counters[dateKey].counter1;
+        });
+
+        document.getElementById("button2").addEventListener("click", function(){
+            var dateKey = `${year}-${month+1}-${today.getDate()}`;
+            counters[dateKey].counter2++;
+            document.getElementById(`counter2-${dateKey}`).innerText = counters[dateKey].counter2;
+        });
     }
 
     // 月の名前を取得する関数
@@ -93,9 +115,4 @@ document.addEventListener("DOMContentLoaded", function() {
         var months = ["1 . ", "2 . ", "3 . ", "4 . ", "5 . ", "6　. ", "7 . ", "8 . ", "9 . ", "10 . ", "11 . ", "12 . "];
         return months[month];
     }
-
 });
-
-
-
-
