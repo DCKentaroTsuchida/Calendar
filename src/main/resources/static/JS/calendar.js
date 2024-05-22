@@ -88,6 +88,24 @@ document.addEventListener("DOMContentLoaded", function() {
             counters[dateKey].counter2++;
             document.getElementById(`counter2-${dateKey}`).innerText = counters[dateKey].counter2;
         });
+        
+        document.getElementById("delButton1").addEventListener("click", function() {
+            var dateKey = `${year}-${month + 1}-${today.getDate()}`;
+            // カウンターの値を減らす
+            if(counters[dateKey].counter1 > 0){
+				counters[dateKey].counter1--;
+	            document.getElementById(`counter1-${dateKey}`).innerText = counters[dateKey].counter1;
+			}
+        });
+        
+        document.getElementById("delButton2").addEventListener("click", function() {
+            var dateKey = `${year}-${month + 1}-${today.getDate()}`;
+            // カウンターの値を減らす
+            if(counters[dateKey].counter2 > 0){
+				counters[dateKey].counter2--;
+	            document.getElementById(`counter2-${dateKey}`).innerText = counters[dateKey].counter2;
+			}
+        });
     }
 
     function getMonthName(month) {

@@ -1,16 +1,23 @@
 @charset "UTF-8";
 
+body{
+	background-color: antiquewhite;
+}
+
 #word{
 	font-size: 50px;
 	text-align: center;
 	font-family: "SimSun", sens-serif;
+	color: rgb(0, 0, 64)
+	
 }
 /* カレンダー全体のスタイル */
 .calendar{
     border-collapse: collapse;
     width: 70%; /* 画面の70%に調整 */
     font-family: "Ink Free", sans-serif; /* Ink Free フォントを指定 */
-    margin: auto; /* 中央揃font-family: "Ink Free", sans-serif;え */
+    margin: auto; /* 中央揃font-family: "Ink Free", sans-serif; */
+    background-color: aliceblue;
 }
 
 /* カレンダーの日付セルのスタイル */
