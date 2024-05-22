@@ -8,18 +8,21 @@ document.addEventListener("DOMContentLoaded", function() {
     renderCalendar(year, month);
 
     function renderCalendar(year, month) {
+		// daysInMonthは月の最後の日、(2022, 11,0)の時は2022年10月の最終日を表す
         var daysInMonth = new Date(year, month + 1, 0).getDate();
+        // firstDayOfWeekは月の最初の日
         var firstDayOfWeek = new Date(year, month, 1).getDay();
-        var calendarHtml = "<table class='calendar'>";
-        calendarHtml += "<tr><th colspan='7'>" + getMonthName(month) + " " + year + "</th></tr>";
-        calendarHtml += "<tr>";
-        calendarHtml += "<th class='prev' id='prev'>&#10094;</th>";
-        calendarHtml += "<th colspan='5'><button id='today'>Back to the Today</button></th>";
-        calendarHtml += "<th class='next' id='next'>&#10095;</th>";
-        calendarHtml += "</tr>";
-        calendarHtml += "<tr>";
-        calendarHtml += "<th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th>";
-        calendarHtml += "</tr>";
+		var calendarHtml = "<table class='calendar'>" +
+                   "<tr><th colspan='7'>" + getMonthName(month) + " " + year + "</th></tr>" +
+                   "<tr>" +
+                   "<th class='prev' id='prev'>&#10094;</th>" +
+                   "<th colspan='5'><button id='today'>Back to the Today</button></th>" +
+                   "<th class='next' id='next'>&#10095;</th>" +
+                   "</tr>" +
+                   "<tr>" +
+                   "<th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th>" +
+                   "</tr>";
+
 
         var dayCounter = 1;
         // カレンダーに必要な6週分(曜日も含まれる)のセルは7×6の42コであるため
@@ -39,10 +42,12 @@ document.addEventListener("DOMContentLoaded", function() {
                                 </td>`;
                 dayCounter++;
             } else {
+				// 中に何も数字が入ってないから空白
                 calendarHtml += "<td></td>";
             }
             if ((i + 1) % 7 === 0) {
                 calendarHtml += "</tr>";
+                // 現在の月の最後の日を超えたら抜ける
                 if (dayCounter > daysInMonth) break;
                 calendarHtml += "<tr>";
             }
